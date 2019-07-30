@@ -24,7 +24,8 @@
       }}
   when: provision_action != 'ignore'
   register: provision
-  until: provision | success
+  ignore_errors: True
+  until: provision is success
   retries: 3
   delay: 10
   changed_when: >-
